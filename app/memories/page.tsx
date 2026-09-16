@@ -6,8 +6,12 @@ import { supabase } from "@/lib/supabase";
 
 type Memorial = {
   id: string;
-  title: string;
-  story: string;
+  child_name: string;
+  birth_date: string | null;
+  remembrance_date: string | null;
+  story: string | null;
+  image_url: string | null;
+  is_public: boolean;
   created_at: string;
 };
 
@@ -15,8 +19,11 @@ export default function Memories() {
   const router = useRouter();
 
   const [memorials, setMemorials] = useState<Memorial[]>([]);
-  const [title, setTitle] = useState("");
+  const [childName, setChildName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [remembranceDate, setRemembranceDate] = useState("");
   const [story, setStory] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
@@ -43,7 +50,9 @@ export default function Memories() {
 
     const { data, error } = await supabase
       .from("memorials")
-      .select("id, title, story, created_at")
+      .select(
+        "id, child_name, birth_date, remembrance_date, story, image_url, is_public, created_at"
+      )
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -60,8 +69,8 @@ export default function Memories() {
 
     if (!supabase) return;
 
-    if (!title.trim() || !story.trim()) {
-      setMessage("Please add a title and a memory before saving.");
+    if (!childName.trim() || !story.trim()) {
+      setMessage("Please add a name and a memory before saving.");
       return;
     }
 
@@ -79,8 +88,11 @@ export default function Memories() {
 
     const { error } = await supabase.from("memorials").insert({
       user_id: user.id,
-      title: title.trim(),
+      child_name: childName.trim(),
+      birth_date: birthDate || null,
+      remembrance_date: remembranceDate || null,
       story: story.trim(),
+      is_public: isPublic,
     });
 
     setSaving(false);
@@ -90,9 +102,13 @@ export default function Memories() {
       return;
     }
 
-    setTitle("");
+    setChildName("");
+    setBirthDate("");
+    setRemembranceDate("");
     setStory("");
+    setIsPublic(false);
     setMessage("Your memory has been saved.");
+
     loadMemorials();
   }
 
@@ -136,11 +152,37 @@ export default function Memories() {
       >
         <input
           type="text"
-          placeholder="Memory title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          placeholder="Child's name"
+          value={childName}
+          onChange={(event) => setChildName(event.target.value)}
           className="w-full rounded-2xl border border-slate-200 px-4 py-3"
         />
+
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label className="mb-2 block text-sm text-slate-600">
+              Birth date
+            </label>
+            <input
+              type="date"
+              value={birthDate}
+              onChange={(event) => setBirthDate(event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+            />
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm text-slate-600">
+              Remembrance date
+            </label>
+            <input
+              type="date"
+              value={remembranceDate}
+              onChange={(event) => setRemembranceDate(event.target.value)}
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+            />
+          </div>
+        </div>
 
         <textarea
           required
@@ -151,10 +193,19 @@ export default function Memories() {
           className="mt-4 w-full resize-none rounded-2xl border border-slate-200 px-4 py-3"
         />
 
+        <label className="mt-4 flex items-center gap-3 text-sm text-slate-600">
+          <input
+            type="checkbox"
+            checked={isPublic}
+            onChange={(event) => setIsPublic(event.target.checked)}
+          />
+          Share this memory publicly in the Garden of Memories
+        </label>
+
         <button
           type="submit"
           disabled={saving}
-          className="mt-4 rounded-full bg-slate-900 px-6 py-3 text-white disabled:opacity-50"
+          className="mt-5 rounded-full bg-slate-900 px-6 py-3 text-white disabled:opacity-50"
         >
           {saving ? "Saving..." : "Save memory"}
         </button>
@@ -185,7 +236,7 @@ export default function Memories() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-xl font-semibold">
-                      {memorial.title}
+                      {memorial.child_name}
                     </h3>
 
                     <p className="mt-1 text-xs text-slate-500">
@@ -202,9 +253,29 @@ export default function Memories() {
                   </button>
                 </div>
 
-                <p className="mt-4 whitespace-pre-wrap text-slate-700">
-                  {memorial.story}
-                </p>
+                {memorial.birth_date && (
+                  <p className="mt-3 text-sm text-slate-500">
+                    Born: {memorial.birth_date}
+                  </p>
+                )}
+
+                {memorial.remembrance_date && (
+                  <p className="mt-1 text-sm text-slate-500">
+                    In remembrance: {memorial.remembrance_date}
+                  </p>
+                )}
+
+                {memorial.story && (
+                  <p className="mt-4 whitespace-pre-wrap text-slate-700">
+                    {memorial.story}
+                  </p>
+                )}
+
+                {memorial.is_public && (
+                  <p className="mt-4 text-xs font-medium text-slate-500">
+                    Public memory
+                  </p>
+                )}
               </article>
             ))}
           </div>
