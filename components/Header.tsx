@@ -26,7 +26,11 @@ export function Header() {
         <nav className="hidden items-center gap-7 text-sm md:flex">
           <Link className="focus-ring rounded-lg" href="/about">
             About
+            
           </Link>
+          <Link className="focus-ring rounded-lg" href="/memories/public">
+  Garden of Memories
+</Link>
           <Link className="focus-ring rounded-lg" href="/support">
             Find Support
           </Link>
