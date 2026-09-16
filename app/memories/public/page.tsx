@@ -53,15 +53,22 @@ export default function PublicMemories() {
           Garden of Memories
         </p>
 
-        <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">
-          A place to remember, honor, and love.
-        </h1>
+      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-800 sm:text-5xl">
+  A place to remember, honor, and love.
+</h1>
 
         <p className="mt-4 text-lg text-slate-600">
-          A collection of memories shared by mothers who wish to honor
-          their children and keep their stories alive.
-        </p>
-      </div>
+  A collection of memories shared by mothers who wish to honor
+  their children and keep their stories alive.
+</p>
+</div>
+
+<div className="mx-auto mt-8 max-w-xl text-center">
+  <div className="mx-auto h-px w-16 bg-slate-200" />
+  <p className="mt-4 text-sm italic text-slate-500">
+    Every memory is a story of love that deserves to be remembered.
+  </p>
+</div>
 
       {loading ? (
         <p className="mt-12 text-center text-slate-600">
