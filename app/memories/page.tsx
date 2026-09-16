@@ -24,6 +24,7 @@ export default function Memories() {
   const [remembranceDate, setRemembranceDate] = useState("");
   const [story, setStory] = useState("");
   const [isPublic, setIsPublic] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
@@ -64,6 +65,27 @@ export default function Memories() {
     setLoading(false);
   }
 
+  function startEditing(memorial: Memorial) {
+    setEditingId(memorial.id);
+    setChildName(memorial.child_name);
+    setBirthDate(memorial.birth_date || "");
+    setRemembranceDate(memorial.remembrance_date || "");
+    setStory(memorial.story || "");
+    setIsPublic(memorial.is_public);
+    setMessage("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function cancelEditing() {
+    setEditingId(null);
+    setChildName("");
+    setBirthDate("");
+    setRemembranceDate("");
+    setStory("");
+    setIsPublic(false);
+    setMessage("");
+  }
+
   async function saveMemorial(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -86,28 +108,44 @@ export default function Memories() {
       return;
     }
 
-    const { error } = await supabase.from("memorials").insert({
-      user_id: user.id,
+    const memorialData = {
       child_name: childName.trim(),
       birth_date: birthDate || null,
       remembrance_date: remembranceDate || null,
       story: story.trim(),
       is_public: isPublic,
-    });
+    };
+
+    const result = editingId
+      ? await supabase
+          .from("memorials")
+          .update(memorialData)
+          .eq("id", editingId)
+          .eq("user_id", user.id)
+      : await supabase.from("memorials").insert({
+          user_id: user.id,
+          ...memorialData,
+        });
 
     setSaving(false);
 
-    if (error) {
-      setMessage(error.message);
+    if (result.error) {
+      setMessage(result.error.message);
       return;
     }
 
+    setMessage(
+      editingId
+        ? "Your memory has been updated."
+        : "Your memory has been saved."
+    );
+
+    setEditingId(null);
     setChildName("");
     setBirthDate("");
     setRemembranceDate("");
     setStory("");
     setIsPublic(false);
-    setMessage("Your memory has been saved.");
 
     loadMemorials();
   }
@@ -202,13 +240,29 @@ export default function Memories() {
           Share this memory publicly in the Garden of Memories
         </label>
 
-        <button
-          type="submit"
-          disabled={saving}
-          className="mt-5 rounded-full bg-slate-900 px-6 py-3 text-white disabled:opacity-50"
-        >
-          {saving ? "Saving..." : "Save memory"}
-        </button>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <button
+            type="submit"
+            disabled={saving}
+            className="rounded-full bg-slate-900 px-6 py-3 text-white disabled:opacity-50"
+          >
+            {saving
+              ? "Saving..."
+              : editingId
+                ? "Update memory"
+                : "Save memory"}
+          </button>
+
+          {editingId && (
+            <button
+              type="button"
+              onClick={cancelEditing}
+              className="rounded-full border border-slate-300 px-6 py-3 text-slate-700"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
 
         {message && (
           <p className="mt-4 rounded-2xl bg-slate-100 p-4 text-sm text-slate-700">
@@ -244,13 +298,23 @@ export default function Memories() {
                     </p>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => deleteMemorial(memorial.id)}
-                    className="text-sm text-slate-500 underline"
-                  >
-                    Delete
-                  </button>
+                  <div className="flex gap-3">
+                    <button
+                      type="button"
+                      onClick={() => startEditing(memorial)}
+                      className="text-sm text-slate-600 underline"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => deleteMemorial(memorial.id)}
+                      className="text-sm text-slate-500 underline"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
 
                 {memorial.birth_date && (
@@ -271,11 +335,11 @@ export default function Memories() {
                   </p>
                 )}
 
-                {memorial.is_public && (
-                  <p className="mt-4 text-xs font-medium text-slate-500">
-                    Public memory
-                  </p>
-                )}
+                <p className="mt-4 text-xs font-medium text-slate-500">
+                  {memorial.is_public
+                    ? "Shared publicly"
+                    : "Private memory"}
+                </p>
               </article>
             ))}
           </div>
