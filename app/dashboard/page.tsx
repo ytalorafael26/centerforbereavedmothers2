@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Dashboard() {
   const items = [
-    ["Journal", "Private writing space", "/journal]",
+    ["Journal", "Private writing space", "/journal"],
     ["Garden of Memories", "Honor and preserve memories", "#"],
     ["Find Support", "Groups and professionals", "#"],
     ["Resources", "Saved and recommended", "#"],
