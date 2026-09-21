@@ -4,7 +4,7 @@ export default function Dashboard() {
   const items = [
     ["Journal", "Private writing space", "/journal"],
     ["Garden of Memories", "Honor and preserve memories", "/memories"],
-    ["Find Support", "Groups and professionals", "#"],
+    ["Find Support", "Groups and professionals", "/support"],
     ["Resources", "Saved and recommended", "#"],
     ["Events", "Upcoming gatherings", "#"],
     ["Settings", "Privacy and preferences", "/settings"],
