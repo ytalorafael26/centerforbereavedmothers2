@@ -15,6 +15,7 @@ type SupportGroup = {
 export default function Support() {
   const [groups, setGroups] = useState<SupportGroup[]>([]);
   const [search, setSearch] = useState("");
+  const [appliedSearch, setAppliedSearch] = useState("");
   const [location, setLocation] = useState("Any location");
   const [language, setLanguage] = useState("Any language");
 
@@ -37,12 +38,11 @@ export default function Support() {
 
   const filteredGroups = groups.filter((group) => {
     const matchesSearch =
-      !search.trim() ||
-      group.name.toLowerCase().includes(search.toLowerCase()) ||
-      (group.description ?? "")
-        .toLowerCase()
-        .includes(search.toLowerCase());
-
+  !appliedSearch.trim() ||
+  group.name.toLowerCase().includes(appliedSearch.toLowerCase()) ||
+  (group.description ?? "")
+    .toLowerCase()
+    .includes(appliedSearch.toLowerCase());
     const matchesLocation =
       location === "Any location" || group.location === location;
 
@@ -103,7 +103,7 @@ export default function Support() {
 
           <button
   type="button"
-  onClick={() => setSearch(search.trim())}
+  onClick={() => setAppliedSearch(search.trim())}
   className="flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-white"
 >
   <Search className="h-4 w-4" />
