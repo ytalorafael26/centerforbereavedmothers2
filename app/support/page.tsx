@@ -102,12 +102,13 @@ export default function Support() {
           </select>
 
           <button
-            type="button"
-            className="flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-white"
-          >
-            <Search className="h-4 w-4" />
-            Search
-          </button>
+  type="button"
+  onClick={() => setSearch(search.trim())}
+  className="flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-white"
+>
+  <Search className="h-4 w-4" />
+  Search
+</button>
         </div>
       </div>
 
