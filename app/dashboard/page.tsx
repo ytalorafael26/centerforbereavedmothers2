@@ -5,7 +5,7 @@ export default function Dashboard() {
     ["Journal", "Private writing space", "/journal"],
     ["Garden of Memories", "Honor and preserve memories", "/memories"],
     ["Find Support", "Groups and professionals", "/support"],
-    ["Resources", "Saved and recommended", "#"],
+    ["Resources", "Saved and recommended", "/resources"],
    ["Events", "Upcoming gatherings", "/events"],
     ["Settings", "Privacy and preferences", "/settings"],
   ];
