@@ -37,7 +37,13 @@ export default function Events() {
   {event.description}
 </p>
            <a
-  href={event.registration_url || "#"}
+  href={event.registration_url || undefined}
+               onClick={(e) => {
+    if (!event.registration_url) {
+      e.preventDefault();
+      alert("Registration details will be available soon.");
+    }
+  }}
   target="_blank"
   rel="noopener noreferrer"
   className="mt-6 inline-block rounded-full bg-slate-900 px-5 py-2.5 text-sm text-white"
