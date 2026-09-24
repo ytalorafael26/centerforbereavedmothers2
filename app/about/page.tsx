@@ -64,30 +64,42 @@ export default function About() {
           </div>
         </div>
       </section>
-            <section className="mt-16">
-        <div className="rounded-4xl bg-slate-50 p-8 md:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">
-            Background & Advocacy
-          </p>
+                 <section className="mt-16">
+        <div className="overflow-hidden rounded-4xl bg-slate-50">
+          <div className="grid items-center md:grid-cols-[1.25fr_.75fr]">
+            <div className="p-8 md:p-12">
+              <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">
+                Background & Advocacy
+              </p>
 
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-            A personal story transformed into purpose.
-          </h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+                A personal story transformed into purpose.
+              </h2>
 
-          <p className="mt-6 max-w-3xl leading-8 text-slate-600">
-            Ana Paula holds a degree in Architecture and a postgraduate
-            specialization in Lighting Design. Alongside her professional
-            background, she has years of experience serving and leading women
-            and young people in Christian communities in Brazil and the United
-            States.
-          </p>
+              <p className="mt-6 leading-8 text-slate-600">
+                Ana Paula holds a degree in Architecture and a postgraduate
+                specialization in Lighting Design. Alongside her professional
+                background, she has years of experience serving and leading women
+                and young people in Christian communities in Brazil and the United
+                States.
+              </p>
 
-          <p className="mt-5 max-w-3xl leading-8 text-slate-600">
-            She is the author of books created from her experience with grief,
-            motherhood and hope, and has developed initiatives focused on
-            supporting bereaved mothers through writing, conversations,
-            community and compassionate resources.
-          </p>
+              <p className="mt-5 leading-8 text-slate-600">
+                She is the author of books created from her experience with grief,
+                motherhood and hope, and has developed initiatives focused on
+                supporting bereaved mothers through writing, conversations,
+                community and compassionate resources.
+              </p>
+            </div>
+
+            <div className="h-full min-h-[420px]">
+              <img
+                src="/IMG_3989.jpg"
+                alt="Ana Paula Fernandes"
+                className="h-full min-h-[420px] w-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>
