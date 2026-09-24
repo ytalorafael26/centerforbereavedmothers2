@@ -61,8 +61,8 @@ export function Header() {
             Find Support
           </Link>
           <Link className="focus-ring rounded-lg" href="/resources">
-            Resources
-          </Link>
+  Materials for the Journey
+</Link>
           <Link className="focus-ring rounded-lg" href="/events">
             Events
           </Link>
@@ -131,7 +131,7 @@ export function Header() {
               href="/resources"
               onClick={() => setOpen(false)}
             >
-              Resources
+                Materials for the Journey
             </Link>
 
             <Link
