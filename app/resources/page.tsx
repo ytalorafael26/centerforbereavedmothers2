@@ -3,9 +3,9 @@ const categories = ["Books","Videos","Meditation","Music","Podcasts","Research",
 export default function Resources() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-16">
-      <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">Resource Library</p>
-      <h1 className="mt-3 text-5xl font-semibold tracking-tight">Explore resources at your own pace.</h1>
-      <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">A searchable home for educational materials, guided practices, articles, research and practical worksheets.</p>
+     <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">Materials for the Journey</p>
+     <h1 className="mt-3 text-5xl font-semibold tracking-tight">Support for every step of your journey.</h1>
+      <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">A collection of e-books, guides and supportive materials created to walk alongside bereaved mothers throughout their journey.</p>
       <div className="mt-10 flex flex-wrap gap-3">{categories.map(c => <button key={c} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-beige">{c}</button>)}</div>
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {["Understanding grief","Gentle self-care","Supporting the family","When to seek professional support","Grief and relationships","Hope after loss"].map((title,i) => (
