@@ -19,6 +19,77 @@ export default function About() {
           </div>
         ))}
       </div>
+            <section className="mt-24 border-t border-slate-200 pt-16">
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <div>
+            <img
+              src="/IMG_3990.jpg"
+              alt="Ana Paula Fernandes de Medeiros Oliveira, founder of the Center for Bereaved Mothers"
+              className="h-[520px] w-full rounded-4xl object-cover shadow-soft"
+            />
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">
+              Meet the Founder
+            </p>
+
+            <h2 className="mt-3 text-4xl font-semibold tracking-tight">
+              Ana Paula Fernandes de Medeiros Oliveira
+            </h2>
+
+            <p className="mt-3 text-lg font-medium text-slate-500">
+              Founder · Author · Bereaved Mother
+            </p>
+
+            <p className="mt-7 leading-8 text-slate-600">
+              Ana Paula is a Brazilian author, speaker and bereaved mother whose
+              personal experience with child loss became the foundation for a
+              mission of compassion, support and connection.
+            </p>
+
+            <p className="mt-5 leading-8 text-slate-600">
+              After walking alongside her son Benício through a complex medical
+              journey and experiencing his loss, Ana transformed part of her own
+              grief into a commitment to help other mothers feel seen, supported
+              and less alone.
+            </p>
+
+            <p className="mt-5 leading-8 text-slate-600">
+              The Center for Bereaved Mothers was born from that vision: to
+              create a safe and compassionate place where mothers can find
+              resources, community, remembrance and support while navigating
+              life after the loss of a child.
+            </p>
+          </div>
+        </div>
+      </section>
+            <section className="mt-16">
+        <div className="rounded-4xl bg-slate-50 p-8 md:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">
+            Background & Advocacy
+          </p>
+
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+            A personal story transformed into purpose.
+          </h2>
+
+          <p className="mt-6 max-w-3xl leading-8 text-slate-600">
+            Ana Paula holds a degree in Architecture and a postgraduate
+            specialization in Lighting Design. Alongside her professional
+            background, she has years of experience serving and leading women
+            and young people in Christian communities in Brazil and the United
+            States.
+          </p>
+
+          <p className="mt-5 max-w-3xl leading-8 text-slate-600">
+            She is the author of books created from her experience with grief,
+            motherhood and hope, and has developed initiatives focused on
+            supporting bereaved mothers through writing, conversations,
+            community and compassionate resources.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
