@@ -26,8 +26,8 @@ export default function Events() {
       <div className="mt-10 grid gap-5 md:grid-cols-3">
        {events.map((event) => (
           <article key={event.id} className="rounded-4xl border border-slate-200 p-7 shadow-soft">
-           <p className="text-sm text-slate-500">
-  {new Date(event.event_date).toLocaleString()}
+           <p className="mt-2 text-sm font-medium text-slate-600">
+  {event.is_online ? "Online" : event.location}
 </p>
             <h2 className="mt-3 text-xl font-semibold">{event.title}</h2>
          <p className="mt-3 text-slate-600">
