@@ -61,7 +61,7 @@ export function Header() {
             Find Support
           </Link>
           <Link className="focus-ring rounded-lg" href="/resources">
-  Materials for the Journey
+  Grief Support Resources
 </Link>
           <Link className="focus-ring rounded-lg" href="/events">
             Events
@@ -127,12 +127,12 @@ export function Header() {
             </Link>
 
             <Link
-              className="rounded-xl px-4 py-3 hover:bg-slate-100"
-              href="/resources"
-              onClick={() => setOpen(false)}
-            >
-                Materials for the Journey
-            </Link>
+  className="rounded-xl px-4 py-3 hover:bg-slate-100"
+  href="/resources"
+  onClick={() => setOpen(false)}
+>
+  Grief Support Resources
+</Link>
 
             <Link
               className="rounded-xl px-4 py-3 hover:bg-slate-100"
