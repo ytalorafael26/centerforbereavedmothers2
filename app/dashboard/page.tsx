@@ -5,7 +5,7 @@ export default function Dashboard() {
     ["My Safe Space", "A private space for your thoughts", "/journal"],
     ["Garden of Memories", "Honor and preserve memories", "/memories"],
     ["Find Support", "Groups and professionals", "/support"],
-    ["Materials for the Journey", "E-books and resources to support your journey", "/resources"],
+   ["Grief Support Resources", "E-books, guides and resources to support you through grief", "/resources"],
    ["Events", "Upcoming gatherings", "/events"],
     ["Settings", "Privacy and preferences", "/settings"],
   ];
