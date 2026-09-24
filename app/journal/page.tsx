@@ -116,7 +116,7 @@ export default function Journal() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-14">
       <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">
-        Private journal
+        My Safe Space
       </p>
 
       <h1 className="mt-3 text-4xl font-semibold">
