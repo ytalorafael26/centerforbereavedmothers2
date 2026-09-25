@@ -48,7 +48,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="grid items-center gap-12 lg:grid-cols-[.85fr_1.15fr]">
+          <div className="overflow-hidden rounded-4xl shadow-soft">
+            <img
+              src="/IMG_4227.jpg"
+              alt="Ana Paula Fernandes, founder of the Center for Bereaved Mothers"
+              className="h-[520px] w-full object-cover"
+            />
+          </div>
 
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">
+              Meet the Founder
+            </p>
+
+            <h2 className="mt-3 text-4xl font-semibold tracking-tight">
+              Born from a mother&apos;s story. Created for many others.
+            </h2>
+
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+              Ana Paula Fernandes is an author, speaker and bereaved mother whose
+              experience of loving and losing her son Benício became part of a
+              greater purpose: creating spaces where grieving mothers can feel
+              seen, supported and less alone.
+            </p>
+
+            <p className="mt-5 max-w-xl leading-8 text-slate-600">
+              The Center for Bereaved Mothers brings that vision to life through
+              compassionate resources, remembrance, connection and community.
+            </p>
+
+            <Link
+              href="/about"
+              className="mt-7 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 font-medium text-slate-900 transition hover:-translate-y-0.5"
+            >
+              Meet Ana
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[.18em] text-slate-500">How we help</p>
